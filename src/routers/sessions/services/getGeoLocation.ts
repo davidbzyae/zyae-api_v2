@@ -2,7 +2,6 @@ import geoip from "geoip-lite";
 
 import { ErrorDetail, GeoLocation, NotFoundError } from "@/types";
 
-// return geolocation or null here but not in assign const in append client gn
 export const getGeoLocation = (
   process: string,
   ip: string

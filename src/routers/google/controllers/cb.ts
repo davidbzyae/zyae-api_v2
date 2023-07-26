@@ -10,18 +10,6 @@ import { newInternalError } from "@/utils";
 import { getGoogleTokens, getGoogleUser } from "../services";
 import { saveGoogleUser } from "../services/saveGoogleUser";
 
-// controllers should not contain service logic:
-
-// implementing this function
-
-// const getTokens = async (code: string) => {
-//   try {
-//     return (await client.getToken(code)).tokens;
-//   } catch (err) {
-//     throw newInternalError(err, "GoogleAuthCallback.GetTokens");
-//   }
-// };
-
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {
     validate(

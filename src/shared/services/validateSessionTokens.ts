@@ -16,7 +16,6 @@ export const validateSessionTokens = (process: string, cookies: any) => {
   if (error) {
     throw new UnauthorizedError(
       "Invalid session tokens",
-      // details,
       [
         new ErrorDetail("BadContent", error.message, {
           process,

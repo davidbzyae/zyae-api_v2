@@ -1,8 +1,6 @@
 import { Server } from "http";
 import { Server as SocketServer } from "socket.io";
 
-// import { socketEvents } from "@/socket/events";
-
 export let io: SocketServer;
 
 export const socketLoader = ({
@@ -19,9 +17,7 @@ export const socketLoader = ({
 
   io = new SocketServer(httpServer, ioOptions);
 
-  io.on("connection", (socket) => {
-    // socketEvents(socket);
-  });
+  io.on("connection", (socket) => {});
 
   return io;
 };
