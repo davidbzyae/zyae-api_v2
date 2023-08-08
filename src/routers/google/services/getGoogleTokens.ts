@@ -1,6 +1,5 @@
-import { newInternalError } from "@/utils";
-
 import { client } from "./googleAuthClient";
+import { newInternalError } from "@/utils";
 
 export const getGoogleTokens = async (process: string, code: string) => {
   try {

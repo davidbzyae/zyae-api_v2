@@ -1,11 +1,10 @@
 import "module-alias/register";
 
-import express from "express";
-import http from "http";
+import { Logger, loaders } from "./loaders";
 
 import config from "@/config";
-
-import { loaders, Logger } from "./loaders";
+import express from "express";
+import http from "http";
 
 async function startServer() {
   const app = express();

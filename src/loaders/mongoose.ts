@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
-
-import config from "../config";
 import { Logger } from "./logger";
+import config from "../config";
+import mongoose from "mongoose";
 
 export const mongooseLoader = async (): Promise<mongoose.mongo.Db> => {
   const connection = await mongoose.connect(config.mongodbUrl);

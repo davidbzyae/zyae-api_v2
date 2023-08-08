@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
 import { AppError } from "@/types";
-import { newInternalError } from "@/utils";
-
 import { client } from "../services";
 import { generateAuthUrl } from "../services/generateAuthUrl";
+import { newInternalError } from "@/utils";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {

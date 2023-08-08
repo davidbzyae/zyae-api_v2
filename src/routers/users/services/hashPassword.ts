@@ -1,5 +1,4 @@
 import bcrypt from "bcrypt";
-
 import { newInternalError } from "@/utils";
 
 export const hashPassword = async (

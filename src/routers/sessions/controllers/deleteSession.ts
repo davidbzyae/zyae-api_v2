@@ -1,9 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 import { AppError } from "@/types";
-import { newInternalError } from "@/utils";
-
 import { deleteSession } from "../services";
+import { newInternalError } from "@/utils";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,9 +1,8 @@
 import { Router } from "express";
-
+import controllers from "./controllers";
 import middleware from "@/shared/middleware";
 
-import controllers from "./controllers";
-
+1;
 const route = Router();
 
 route.get("/me", middleware.attachSession(), controllers.getMe);

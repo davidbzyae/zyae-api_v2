@@ -1,4 +1,4 @@
-import { Model, model, Schema, Types } from "mongoose";
+import { Model, Schema, Types, model } from "mongoose";
 
 const required = (type: any) => {
   return { required: true, type };

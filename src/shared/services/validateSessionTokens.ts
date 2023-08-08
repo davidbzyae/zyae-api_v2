@@ -1,12 +1,12 @@
-import { AnySchema } from "joi";
-
-import { cookieTokensSchema } from "@/schemas";
 import {
   BadRequestError,
   ErrorDetail,
   ErrorReason,
   UnauthorizedError,
 } from "@/types";
+
+import { AnySchema } from "joi";
+import { cookieTokensSchema } from "@/schemas";
 
 export const validateSessionTokens = (process: string, cookies: any) => {
   process = process + `.ValidateSessionTokens`;

@@ -1,8 +1,7 @@
 import { Express } from "express";
 import { Server } from "http";
-import mongoose from "mongoose";
-
 import { expressLoader } from "./express";
+import mongoose from "mongoose";
 import { mongooseLoader } from "./mongoose";
 import { redisLoader } from "./redis";
 import { socketLoader } from "./socketio";

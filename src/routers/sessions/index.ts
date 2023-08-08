@@ -1,8 +1,6 @@
 import { Router } from "express";
-
-import middleware from "@/shared/middleware";
-
 import controllers from "./controllers";
+import middleware from "@/shared/middleware";
 
 const route = Router();
 

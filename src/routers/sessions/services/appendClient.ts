@@ -1,6 +1,6 @@
-import { redis } from "@/loaders";
 import { Client } from "@/types";
 import { newInternalError } from "@/utils";
+import { redis } from "@/loaders";
 
 export const appendClient = async (
   process: string,

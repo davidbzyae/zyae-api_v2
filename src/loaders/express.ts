@@ -1,18 +1,17 @@
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import express, { Express, NextFunction, Request, Response } from "express";
-
-import config from "@/config";
-import { googleRouter, sessionsRouter, usersRouter } from "@/routers/";
-import middleware from "@/shared/middleware";
 import {
   AppError,
   AppErrorResponse,
   ForbiddenError,
   NotFoundError,
 } from "@/types";
+import express, { Express, NextFunction, Request, Response } from "express";
+import { googleRouter, sessionsRouter, usersRouter } from "@/routers/";
 
 import { Logger } from "./logger";
+import config from "@/config";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import middleware from "@/shared/middleware";
 
 export const expressLoader = ({ app }: { app: Express }) => {
   app.disable("x-powered-by");

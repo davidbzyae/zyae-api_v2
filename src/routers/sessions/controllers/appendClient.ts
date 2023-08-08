@@ -1,11 +1,10 @@
-import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
-
-import { validate } from "@/shared";
 import { AppError, Client, DeviceInfo } from "@/types";
-import { newInternalError } from "@/utils";
-
+import { NextFunction, Request, Response } from "express";
 import { appendClient, getGeoLocation } from "../services";
+
+import Joi from "joi";
+import { newInternalError } from "@/utils";
+import { validate } from "@/shared";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   type Body = { client: Omit<Client, "ipAddress" | "geoLocation"> };

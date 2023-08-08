@@ -1,6 +1,6 @@
-import { AnySchema } from "joi";
-
 import { BadRequestError, ErrorDetail, ErrorReason } from "@/types";
+
+import { AnySchema } from "joi";
 
 const getErrorMetaData = (
   type: string

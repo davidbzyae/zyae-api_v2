@@ -1,11 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
-
-import { validate } from "@/shared";
-import { AppError } from "@/types";
-import { newInternalError } from "@/utils";
-
 import { checkEmailAvailable, hashPassword, saveUser } from "../services";
+
+import { AppError } from "@/types";
+import Joi from "joi";
+import { newInternalError } from "@/utils";
+import { validate } from "@/shared";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   type Body = {

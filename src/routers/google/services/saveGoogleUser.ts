@@ -1,9 +1,9 @@
-import { oauth2_v2 } from "googleapis";
-import { Types } from "mongoose";
-
 import { User, UserModel } from "@/models";
+
 import { LeanedUserDoc } from "@/types";
+import { Types } from "mongoose";
 import { newInternalError } from "@/utils";
+import { oauth2_v2 } from "googleapis";
 
 export const saveGoogleUser = async (
   process: string,

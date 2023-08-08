@@ -1,6 +1,6 @@
-import { redis } from "@/loaders";
 import { DeepPartial } from "@/types";
 import { newInternalError } from "@/utils";
+import { redis } from "@/loaders";
 
 const isMatch = <T>(data: T, filter: object) => {
   for (const prop in filter) {

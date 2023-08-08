@@ -1,14 +1,13 @@
-import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
-
-import { sessionCookieOptions } from "@/config";
-import { UserModel } from "@/models";
-import { findOneUser, getSession, saveSession, validate } from "@/shared";
 import { AppError, BadRequestError, ErrorDetail } from "@/types";
-import { newInternalError } from "@/utils";
-
+import { NextFunction, Request, Response } from "express";
+import { findOneUser, getSession, saveSession, validate } from "@/shared";
 import { getGoogleTokens, getGoogleUser } from "../services";
+
+import Joi from "joi";
+import { UserModel } from "@/models";
+import { newInternalError } from "@/utils";
 import { saveGoogleUser } from "../services/saveGoogleUser";
+import { sessionCookieOptions } from "@/config";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {

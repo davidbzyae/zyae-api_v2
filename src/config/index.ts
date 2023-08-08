@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
 import { CookieOptions } from "express";
+import dotenv from "dotenv";
 
 process.title = "zyae-api_v2";
 process.env.NODE_ENV = process.env.NODE_ENV || "development";

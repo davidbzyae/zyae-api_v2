@@ -1,12 +1,12 @@
-import bcrypt from "bcrypt";
-
-import { UserModel } from "@/models";
 import {
   AppError,
   ConflictError,
   ErrorDetail,
   UnauthorizedError,
 } from "@/types";
+
+import { UserModel } from "@/models";
+import bcrypt from "bcrypt";
 import { newInternalError } from "@/utils";
 
 export const authenticateUser = async (

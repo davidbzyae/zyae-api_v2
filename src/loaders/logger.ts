@@ -1,6 +1,5 @@
-import winston from "winston";
-
 import config from "@/config";
+import winston from "winston";
 
 const errorFileTransportConfig = {
   level: "error",

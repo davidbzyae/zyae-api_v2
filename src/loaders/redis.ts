@@ -1,10 +1,9 @@
-import { createClient, RedisClientType } from "redis";
-import { Server as SocketServer } from "socket.io";
-
-import { Session } from "@/types";
-import { createAdapter } from "@socket.io/redis-adapter";
+import { RedisClientType, createClient } from "redis";
 
 import { Logger } from "./logger";
+import { Session } from "@/types";
+import { Server as SocketServer } from "socket.io";
+import { createAdapter } from "@socket.io/redis-adapter";
 
 export let redis: RedisClientType;
 

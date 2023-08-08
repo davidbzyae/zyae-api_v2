@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
-
-import { validateObjectId } from "@/schemas";
 import { getUserById, validate } from "@/shared";
+
 import { AppError } from "@/types";
+import Joi from "joi";
 import { newInternalError } from "@/utils";
+import { validateObjectId } from "@/schemas";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   try {

@@ -1,5 +1,6 @@
-import { UserModel } from "@/models";
 import { AppError, ConflictError, ErrorDetail } from "@/types";
+
+import { UserModel } from "@/models";
 import { newInternalError } from "@/utils";
 
 export const checkEmailAvailable = async (process: string, email: string) => {

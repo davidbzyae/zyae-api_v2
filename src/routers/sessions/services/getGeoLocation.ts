@@ -1,6 +1,6 @@
-import geoip from "geoip-lite";
-
 import { ErrorDetail, GeoLocation, NotFoundError } from "@/types";
+
+import geoip from "geoip-lite";
 
 export const getGeoLocation = (
   process: string,

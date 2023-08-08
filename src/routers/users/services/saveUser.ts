@@ -1,7 +1,7 @@
-import { Types } from "mongoose";
-
 import { User, UserModel } from "@/models";
+
 import { AppError } from "@/types";
+import { Types } from "mongoose";
 import { newInternalError } from "@/utils";
 
 type UserData = {

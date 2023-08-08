@@ -1,6 +1,5 @@
-import { google } from "googleapis";
-
 import config from "@/config";
+import { google } from "googleapis";
 
 export const client = new google.auth.OAuth2(
   config.googleClientId,

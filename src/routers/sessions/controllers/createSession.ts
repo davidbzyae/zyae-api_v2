@@ -1,17 +1,16 @@
-import { NextFunction, Request, Response } from "express";
-import Joi from "joi";
-
-import { sessionCookieOptions } from "@/config";
-import { findOneUser, saveSession, validate } from "@/shared";
 import {
   AppError,
   ConflictError,
   ErrorDetail,
   UnauthorizedError,
 } from "@/types";
-import { newInternalError } from "@/utils";
-
+import { NextFunction, Request, Response } from "express";
 import { authenticateUser, checkDuplicateSession } from "../services";
+import { findOneUser, saveSession, validate } from "@/shared";
+
+import Joi from "joi";
+import { newInternalError } from "@/utils";
+import { sessionCookieOptions } from "@/config";
 
 export default async (req: Request, res: Response, next: NextFunction) => {
   type Body = {

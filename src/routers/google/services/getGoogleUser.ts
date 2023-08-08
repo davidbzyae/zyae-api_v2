@@ -1,6 +1,5 @@
 import { Credentials } from "google-auth-library";
 import { google } from "googleapis";
-
 import { newInternalError } from "@/utils";
 
 export const getGoogleUser = async (process: string, tokens: Credentials) => {

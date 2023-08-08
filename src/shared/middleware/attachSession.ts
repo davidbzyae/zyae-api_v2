@@ -1,9 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-
 import { AppError, CookieTokens } from "@/types";
-import { newInternalError } from "@/utils";
-
+import { NextFunction, Request, Response } from "express";
 import { getSession, validateSessionTokens } from "../services";
+
+import { newInternalError } from "@/utils";
 
 export default (
     flags: { authRequired: boolean; validateSession: boolean } = {

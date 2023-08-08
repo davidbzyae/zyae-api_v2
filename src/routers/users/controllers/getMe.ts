@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 
-import { getUserById } from "@/shared";
 import { AppError } from "@/types";
+import { getUserById } from "@/shared";
 import { newInternalError } from "@/utils";
 
 export default async (req: Request, res: Response, next: NextFunction) => {

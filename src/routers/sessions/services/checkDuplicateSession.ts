@@ -1,5 +1,6 @@
-import { getSession } from "@/shared";
 import { AppError, ConflictError, CookieTokens, ErrorDetail } from "@/types";
+
+import { getSession } from "@/shared";
 import { newInternalError } from "@/utils";
 
 export const checkDuplicateSession = async (
