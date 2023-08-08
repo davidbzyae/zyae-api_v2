@@ -1,4 +1,3 @@
-import { matchRedisKeys } from "@/shared";
 import {
   AppError,
   DeepPartial,
@@ -7,6 +6,8 @@ import {
   Session,
   UnauthorizedError,
 } from "@/types";
+
+import { matchRedisKeys } from "@/shared";
 import { newInternalError } from "@/utils";
 
 type SessionDoc<Validated extends boolean> = Validated extends true
@@ -28,7 +29,10 @@ export const getSession = async <T extends boolean>(
       await matchRedisKeys<Session>(process, "session", filter)
     )[0];
 
-    if (flags.validateSession && (!session || new Date() > session.expiresAt)) {
+    if (
+      flags.validateSession &&
+      (!session || new Date() > new Date(session.expiresAt))
+    ) {
       const expired = !!session;
 
       throw new (
@@ -36,7 +40,7 @@ export const getSession = async <T extends boolean>(
       )(expired ? "Session access expired" : "Session not found", [
         new ErrorDetail(
           flags.authRequired || expired ? "Unauthorized" : "NotFound",
-          "Session not found",
+          expired ? "Session access expired" : "Session not found",
           {
             process,
             flags,

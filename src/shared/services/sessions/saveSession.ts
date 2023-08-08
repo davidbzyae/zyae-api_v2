@@ -1,9 +1,8 @@
-import crypto from "crypto";
-
-import { redis } from "@/loaders";
-import { User } from "@/models";
 import { Session } from "@/types";
+import { User } from "@/models";
+import crypto from "crypto";
 import { newInternalError } from "@/utils";
+import { redis } from "@/loaders";
 
 export const saveSession = async (
   process: string,
@@ -23,12 +22,12 @@ export const saveSession = async (
       clients: [],
       accessToken: generateToken(),
       refreshToken: generateToken(),
-      expiresAt: new Date(date.getTime() + 1000 * 60 * 0.1), // 10 minutes
+      expiresAt: new Date(date.getTime() + 1000 * 60 * 10), // 10 minutes
       updatedAt: date,
     };
 
     // Session data is asserted as `any` here because RedisJSON expects data to have an index signature.
-    // Interfaces do not have an index signature so type `Session` (which contains interface `User` and `Date`) result in a type conflict.
+    // Interfaces do not have an index signature so type `Session` (which contains interface `User` and `Date`) results in a type conflict.
     await redis.json.set(`session:${sessionData.id}`, ".", sessionData as any);
 
     return sessionData;
