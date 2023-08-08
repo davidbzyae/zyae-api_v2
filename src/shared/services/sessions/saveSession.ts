@@ -1,7 +1,7 @@
+import { generateToken, newInternalError } from "@/utils";
+
 import { Session } from "@/types";
 import { User } from "@/models";
-import crypto from "crypto";
-import { newInternalError } from "@/utils";
 import { redis } from "@/loaders";
 
 export const saveSession = async (
@@ -9,8 +9,6 @@ export const saveSession = async (
   user: User
 ): Promise<Session> => {
   process = process + ".SaveSession";
-
-  const generateToken = () => crypto.randomBytes(64).toString("base64");
 
   try {
     const date = new Date();
