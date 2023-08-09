@@ -18,8 +18,8 @@ export const getSession = async <T extends boolean>(
   process: string,
   filter: DeepPartial<Session>,
   flags: {
-    authRequired: boolean;
-    validateSession: T;
+    checkExists: boolean;
+    checkExpired: T;
   }
 ): Promise<SessionDoc<T>> => {
   try {
@@ -29,25 +29,32 @@ export const getSession = async <T extends boolean>(
       await matchRedisKeys<Session>(process, "session", filter)
     )[0];
 
-    if (
-      flags.validateSession &&
-      (!session || new Date() > new Date(session.expiresAt))
-    ) {
-      const expired = !!session;
+    if (flags.checkExists && !session)
+      throw new (flags.checkExpired ? UnauthorizedError : NotFoundError)(
+        "Session not found",
+        [
+          new ErrorDetail(
+            flags.checkExpired ? "Unauthorized" : "NotFound",
+            "Session not found",
+            {
+              process,
+              flags,
+            }
+          ),
+        ]
+      );
 
-      throw new (
-        flags.authRequired || expired ? UnauthorizedError : NotFoundError
-      )(expired ? "Session access expired" : "Session not found", [
-        new ErrorDetail(
-          flags.authRequired || expired ? "Unauthorized" : "NotFound",
-          expired ? "Session access expired" : "Session not found",
-          {
-            process,
-            flags,
-          }
-        ),
+    if (
+      session &&
+      flags.checkExpired &&
+      new Date() > new Date(session.expiresAt)
+    )
+      throw new UnauthorizedError("Session access expired", [
+        new ErrorDetail("Unauthorized", "Session access expired", {
+          process,
+          flags,
+        }),
       ]);
-    }
 
     return session as SessionDoc<T>;
   } catch (err) {

@@ -5,9 +5,9 @@ import { getSession, validateSessionTokens } from "../services";
 import { newInternalError } from "@/utils";
 
 export default (
-    flags: { authRequired: boolean; validateSession: boolean } = {
-      authRequired: true,
-      validateSession: true,
+    flags: { checkExists: boolean; checkExpired: boolean } = {
+      checkExists: true,
+      checkExpired: true,
     }
   ) =>
   async (req: Request, res: Response, next: NextFunction) => {

@@ -40,7 +40,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     var session = await getSession(
       "Cb",
       { userId: user._id.toString() },
-      { authRequired: false, validateSession: false }
+      { checkExists: false, checkExpired: false }
     );
     if (!session) session = await saveSession("Cb", user);
 

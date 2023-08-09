@@ -15,8 +15,8 @@ export const checkDuplicateSession = async (
         id: tokens.sid,
       },
       {
-        validateSession: false,
-        authRequired: false,
+        checkExists: false,
+        checkExpired: false,
       }
     );
     if (session)

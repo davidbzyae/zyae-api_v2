@@ -6,7 +6,7 @@ const route = Router();
 
 route.get(
   "/tokens",
-  middleware.attachSession({ authRequired: true, validateSession: false }),
+  middleware.attachSession({ checkExists: true, checkExpired: false }),
   controllers.getTokens
 );
 
