@@ -27,7 +27,13 @@ export const saveUser = async (
       },
       profile: {
         displayName: userData.displayName,
-        thumbnail: [],
+        thumbnail: [
+          {
+            url: "https://zyae.net/assets/images/account/userdefault.png",
+            width: 96,
+            height: 96,
+          },
+        ],
       },
       metadata: {
         createdAt: new Date(),
