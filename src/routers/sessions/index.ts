@@ -4,7 +4,11 @@ import middleware from "@/shared/middleware";
 
 const route = Router();
 
-route.get("/tokens", middleware.attachSession(), controllers.getTokens);
+route.get(
+  "/tokens",
+  middleware.attachSession({ authRequired: true, validateSession: false }),
+  controllers.getTokens
+);
 
 route.post("/", controllers.createSession);
 route.post("/clients", middleware.attachSession(), controllers.appendClient);
