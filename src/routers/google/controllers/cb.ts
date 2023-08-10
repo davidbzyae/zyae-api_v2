@@ -1,10 +1,9 @@
-import { AppError, BadRequestError, ErrorDetail } from "@/types";
 import { NextFunction, Request, Response } from "express";
 import { findOneUser, getSession, saveSession, validate } from "@/shared";
 import { getGoogleTokens, getGoogleUser } from "../services";
 
+import { AppError } from "@/types";
 import Joi from "joi";
-import { UserModel } from "@/models";
 import { newInternalError } from "@/utils";
 import { saveGoogleUser } from "../services/saveGoogleUser";
 import { sessionCookieOptions } from "@/config";
@@ -20,12 +19,17 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         scope: Joi.string().required(),
         authuser: Joi.string().required(),
         prompt: Joi.string().required(),
+        state: Joi.string().required(),
       }).required()
     );
 
     const code = req.query.code as string; // code is of type string per above validation
+    const state: { redirectUrl: string } = JSON.parse(
+      req.query.state as string
+    );
 
     const tokens = await getGoogleTokens("Cb", code);
+
     const googleUser = await getGoogleUser("Cb", tokens);
 
     var user = await findOneUser(
@@ -48,7 +52,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       .cookie("sid", session.id, sessionCookieOptions)
       .cookie("at", session.accessToken, sessionCookieOptions)
       .cookie("rt", session.refreshToken, sessionCookieOptions)
-      .redirect(`https://zyae.net/api/db/users/${user._id}`);
+      .redirect(state.redirectUrl);
   } catch (err) {
     if (err instanceof AppError) return next(err);
     else return next(newInternalError("Cb", err));
