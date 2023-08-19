@@ -7,6 +7,7 @@ export const refreshSessionAccess = async (
   process: string,
   session: Session
 ) => {
+  process = process + ".RefreshSessionAccess";
   try {
     const date = new Date();
 
