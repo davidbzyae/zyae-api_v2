@@ -10,7 +10,7 @@ import {
 import { matchRedisKeys } from "@/shared";
 import { newInternalError } from "@/utils";
 
-type SessionDoc<Validated extends boolean> = Validated extends true
+type SessionDoc<CheckExists extends boolean> = CheckExists extends true
   ? Session
   : void | Session;
 
@@ -18,8 +18,8 @@ export const getSession = async <T extends boolean>(
   process: string,
   filter: DeepPartial<Session>,
   flags: {
-    checkExists: boolean;
-    checkExpired: T;
+    checkExists: T;
+    checkExpired: boolean;
   }
 ): Promise<SessionDoc<T>> => {
   try {
