@@ -31,6 +31,16 @@ export const expressLoader = ({ app }: { app: Express }) => {
     })
   );
 
+  // http logger
+  app.use((req, res, next) => {
+    Logger.info({
+      message: `${req.method} ${req.url}`,
+      url: req.url,
+      headers: req.headers,
+    });
+    next();
+  });
+
   // routes
 
   // auth
