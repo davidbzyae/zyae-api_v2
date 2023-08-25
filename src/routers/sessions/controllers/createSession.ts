@@ -26,7 +26,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
       Joi.object({
         email: Joi.string().required(),
         password: Joi.string().required(),
-      })
+      }).required()
     );
 
     const body: Body = req.body;

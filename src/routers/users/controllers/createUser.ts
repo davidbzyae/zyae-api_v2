@@ -22,7 +22,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         password: Joi.string().required(),
         email: Joi.string().email().required(),
         displayName: Joi.string().required(),
-      })
+      }).required()
     );
 
     const body: Body = req.body;
