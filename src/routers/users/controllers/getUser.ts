@@ -23,7 +23,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     });
     delete user.auth.password;
 
-    res.status(200).json({
+    res.json({
       data: {
         user,
       },
